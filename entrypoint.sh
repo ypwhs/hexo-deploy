@@ -35,10 +35,6 @@ echo "Deploy to ${PRO_REPOSITORY}"
 # Directs the action to the the Github workspace.
 cd $GITHUB_WORKSPACE 
 
-echo "npm install ..." 
-npm install
-
-
 echo "Clean folder ..."
 ./node_modules/hexo/bin/hexo clean
 
