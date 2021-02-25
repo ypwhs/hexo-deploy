@@ -61,7 +61,7 @@ then
     git remote add origin "${REPOSITORY_PATH}"
 else
     echo "git exist and set origin"
-    git remote set-url "${REPOSITORY_PATH}"
+    git remote set-url origin "${REPOSITORY_PATH}"
 fi
 
 # Checks to see if the remote exists prior to deploying.
