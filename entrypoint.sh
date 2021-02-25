@@ -35,8 +35,8 @@ echo "Deploy to ${PRO_REPOSITORY}"
 # Directs the action to the the Github workspace.
 cd $GITHUB_WORKSPACE 
 
-echo "Clean folder ..."
-./node_modules/hexo/bin/hexo clean
+# echo "Clean folder ..."
+# ./node_modules/hexo/bin/hexo clean
 
 echo "Generate file ..."
 ./node_modules/hexo/bin/hexo generate
@@ -51,10 +51,16 @@ cd $PUBLISH_DIR
 echo "Config git ..."
 
 # Configures Git.
-# git init
 git config user.name "${GITHUB_ACTOR}"
 git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-# git remote add origin "${REPOSITORY_PATH}"
+
+if ! git rev-parse;
+then
+    echo "git init"
+    git init
+    git remote add origin "${REPOSITORY_PATH}"
+fi
+
 
 # Checks to see if the remote exists prior to deploying.
 # If the branch doesn't exist it gets created here as an orphan.
