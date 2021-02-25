@@ -56,11 +56,13 @@ git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
 if ! git rev-parse;
 then
-    echo "git init"
+    echo "git init and add origin"
     git init
     git remote add origin "${REPOSITORY_PATH}"
+else
+    echo "git exist and set origin"
+    git remote set-url "${REPOSITORY_PATH}"
 fi
-
 
 # Checks to see if the remote exists prior to deploying.
 # If the branch doesn't exist it gets created here as an orphan.
