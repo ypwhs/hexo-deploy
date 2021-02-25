@@ -35,11 +35,13 @@ echo "Deploy to ${PRO_REPOSITORY}"
 # Directs the action to the the Github workspace.
 cd $GITHUB_WORKSPACE 
 
-# echo "Clean folder ..."
-# ./node_modules/hexo/bin/hexo clean
+echo "Clean folder ..."
+./node_modules/hexo/bin/hexo clean
 
 echo "Generate file ..."
 ./node_modules/hexo/bin/hexo generate
+
+exit 0
 
 echo "copy CNAME if exists"
 if [ -n "${CNAME}" ]; then
